@@ -1,0 +1,4 @@
+DeSymfonyUserBundle:
+    resource: "@DeSymfonyUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
