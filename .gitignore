@@ -7,3 +7,5 @@ web/bundles
 vendor
 
 deps.lock
+
+.vimrc

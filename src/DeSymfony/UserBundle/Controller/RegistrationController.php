@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * @Route("/registro")
  */
-class RegistroController extends Controller
+class RegistrationController extends Controller
 {
     /**
      * @Route("/")
