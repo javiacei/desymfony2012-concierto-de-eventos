@@ -4,6 +4,7 @@ namespace DeSymfony\UserBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class RequestListener
 {
@@ -16,6 +17,8 @@ class RequestListener
 
     public function onKernelRequest(GetResponseEvent $event)
     {
-        $this->logger->info("Evento notificado **kernel.request** por el bundle DeSymfonyUserBundle");
+        if (HttpKernelInterface::MASTER_REQUEST === $event->getRequestType()) {
+            $this->logger->info("Evento notificado **kernel.request** por el bundle DeSymfonyUserBundle");
+        }
     }
 }
