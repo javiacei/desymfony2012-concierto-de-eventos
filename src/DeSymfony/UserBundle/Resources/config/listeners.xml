@@ -11,7 +11,7 @@
 
   <services>
     <service id="de_symfony_user.request_listener" class="%de_symfony_user.request_listener.class%">
-      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" />
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="1" />
     </service>
   </services>
 </container>
