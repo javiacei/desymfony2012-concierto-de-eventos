@@ -11,7 +11,10 @@
 
   <services>
     <service id="de_symfony_user.request_listener" class="%de_symfony_user.request_listener.class%">
-      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="1" />
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="4096" />
+      <tag name="monolog.logger" channel="desymfony" />
+
+      <argument type="service" id="logger" />
     </service>
   </services>
 </container>
