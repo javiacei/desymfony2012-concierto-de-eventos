@@ -21,4 +21,17 @@ class RegistrationController extends Controller
     {
         return array();
     }
+
+
+    /**
+     * @Template()
+     */
+    public function listRandomUsersAction()
+    {
+        $users = array('javi', 'eduardo', 'nacho', 'moi');
+
+        return array(
+            'users' => $users
+        );
+    }
 }
