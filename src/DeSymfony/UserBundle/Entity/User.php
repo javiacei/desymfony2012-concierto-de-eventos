@@ -26,9 +26,9 @@ class User
     protected $email;
 
     /**
-     * @ORM\Column(type="object")
+     * @ORM\Column(type="array")
      */
-    protected $metadata;
+    protected $metadata = array();
 
     /**
      * Get id
@@ -63,7 +63,7 @@ class User
     /**
      * Set metadata
      *
-     * @param object $metadata
+     * @param array $metadata
      */
     public function setMetadata($metadata)
     {
@@ -73,7 +73,7 @@ class User
     /**
      * Get metadata
      *
-     * @return object
+     * @return array
      */
     public function getMetadata()
     {

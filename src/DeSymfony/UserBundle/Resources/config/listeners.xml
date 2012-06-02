@@ -7,6 +7,7 @@
 
   <parameters>
     <parameter key="de_symfony_user.request_listener.class">DeSymfony\UserBundle\EventListener\RequestListener</parameter>
+    <parameter key="de_symfony_user.user_listener.class">DeSymfony\UserBundle\EventListener\UserListener</parameter>
   </parameters>
 
   <services>
@@ -15,6 +16,10 @@
       <tag name="monolog.logger" channel="desymfony" />
 
       <argument type="service" id="logger" />
+    </service>
+
+    <service id="de_symfony_user.user_listener" class="%de_symfony_user.user_listener.class%">
+      <tag name="desymfony_user.event_listener" event="desymfony.pre_user_save" method="onPreUserSave" priority="1" />
     </service>
   </services>
 </container>

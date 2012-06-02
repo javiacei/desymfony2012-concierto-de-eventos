@@ -41,10 +41,5 @@ class UserManager
     {
         return $this->em->getRepository('DeSymfonyUserBundle:User')->findAll();
     }
-
-    public function addSubscriber($listener)
-    {
-        $this->dispatcher->addSubscriber($listener);
-    }
 }
 
