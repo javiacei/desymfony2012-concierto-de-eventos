@@ -46,8 +46,8 @@ class RegistrationController extends Controller
 
         $userManager = $this->get('de_symfony_user.user_manager');
 
-        $userListener = new \DeSymfony\UserBundle\EventListener\UserListener();
-        $userManager->addListener('desymfony.pre_user_save', array($userListener, 'onPreUserSave'));
+        $userSubscriber = new \DeSymfony\UserBundle\EventListener\UserListener();
+        $userManager->addSubscriber($userSubscriber);
 
         $user = $userManager->createUser($email);
 

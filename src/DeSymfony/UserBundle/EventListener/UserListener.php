@@ -6,9 +6,17 @@ namespace DeSymfony\UserBundle\EventListener;
 
 use DeSymfony\UserBundle\Event\GetUserEvent;
 use Guzzle\Http\Client;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class UserListener
+class UserListener implements EventSubscriberInterface
 {
+    static public function getSubscribedEvents()
+    {
+        return array(
+            'desymfony.pre_user_save' => array('onPreUserSave', 0)
+        );
+    }
+
     public function onPreUserSave(GetUserEvent $event)
     {
         $user = $event->getUser();
