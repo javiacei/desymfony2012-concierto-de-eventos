@@ -41,3 +41,4 @@ class UserManager
         return $this->em->getRepository('DeSymfonyUserBundle:User')->findAll();
     }
 }
+
