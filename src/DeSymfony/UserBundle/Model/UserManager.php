@@ -29,7 +29,7 @@ class UserManager
         $user->setEmail($email);
 
         $event = new GetUserEvent($user);
-        $this->dispatcher->dispatch(UserEvents::DESYMFONY_PRE_USER_SAVE, $event);
+        $this->dispatcher->dispatch(UserEvents::PRE_USER_SAVE, $event);
 
         $this->em->persist($user);
         $this->em->flush();

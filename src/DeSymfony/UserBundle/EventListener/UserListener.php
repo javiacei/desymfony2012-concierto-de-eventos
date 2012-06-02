@@ -14,7 +14,7 @@ class UserListener implements EventSubscriberInterface
     static public function getSubscribedEvents()
     {
         return array(
-            UserEvents::DESYMFONY_PRE_USER_SAVE => array('onPreUserSave', 0)
+            UserEvents::PRE_USER_SAVE => array('onPreUserSave', 0)
         );
     }
 

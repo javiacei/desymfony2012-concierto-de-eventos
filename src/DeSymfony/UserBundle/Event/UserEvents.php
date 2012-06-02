@@ -12,5 +12,5 @@ final class UserEvents
      *
      * @var string
      */
-    const DESYMFONY_PRE_USER_SAVE = 'desymfony.pre_user_save';
+    const PRE_USER_SAVE = 'desymfony.pre_user_save';
 }
