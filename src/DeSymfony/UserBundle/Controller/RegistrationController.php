@@ -43,7 +43,13 @@ class RegistrationController extends Controller
     public function registerUserAction()
     {
         $email = $this->getRequest()->get('email');
-        $user = $this->get('de_symfony_user.user_manager')->createUser($email);
+
+        $userManager = $this->get('de_symfony_user.user_manager');
+
+        $userListener = new \DeSymfony\UserBundle\EventListener\UserListener();
+        $userManager->addListener('desymfony.pre_user_save', array($userListener, 'onPreUserSave'));
+
+        $user = $userManager->createUser($email);
 
         $this->get('session')->setFlash('info', "Usuario {$user->getEmail()} registrado correctamente");
         return $this->redirect($this->generateUrl('registration_index'));
