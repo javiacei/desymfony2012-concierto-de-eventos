@@ -7,6 +7,7 @@ namespace DeSymfony\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * @Route("/registro")
@@ -14,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class RegistrationController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="registration_index")
      * @Template()
      */
     public function indexAction()
@@ -26,12 +27,25 @@ class RegistrationController extends Controller
     /**
      * @Template()
      */
-    public function listRandomUsersAction()
+    public function listUsersAction()
     {
-        $users = array('javi', 'eduardo', 'nacho', 'moi');
+        $users = $this->get('de_symfony_user.user_manager')->findAllUsers();
 
         return array(
             'users' => $users
         );
+    }
+
+    /**
+     * @Route("/guardar", name="registration_save")
+     * @Method("POST")
+     */
+    public function registerUserAction()
+    {
+        $email = $this->getRequest()->get('email');
+        $user = $this->get('de_symfony_user.user_manager')->createUser($email);
+
+        $this->get('session')->setFlash('info', "Usuario {$user->getEmail()} registrado correctamente");
+        return $this->redirect($this->generateUrl('registration_index'));
     }
 }
