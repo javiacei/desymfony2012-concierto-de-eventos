@@ -4,6 +4,7 @@ namespace DeSymfony\UserBundle\Model;
 
 use DeSymfony\UserBundle\Entity\User;
 use DeSymfony\UserBundle\Event\GetUserEvent;
+use DeSymfony\UserBundle\Event\UserEvents;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -28,7 +29,7 @@ class UserManager
         $user->setEmail($email);
 
         $event = new GetUserEvent($user);
-        $this->dispatcher->dispatch('desymfony.pre_user_save', $event);
+        $this->dispatcher->dispatch(UserEvents::DESYMFONY_PRE_USER_SAVE, $event);
 
         $this->em->persist($user);
         $this->em->flush();

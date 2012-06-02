@@ -5,6 +5,7 @@
 namespace DeSymfony\UserBundle\EventListener;
 
 use DeSymfony\UserBundle\Event\GetUserEvent;
+use DeSymfony\UserBundle\Event\UserEvents;
 use Guzzle\Http\Client;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -13,7 +14,7 @@ class UserListener implements EventSubscriberInterface
     static public function getSubscribedEvents()
     {
         return array(
-            'desymfony.pre_user_save' => array('onPreUserSave', 0)
+            UserEvents::DESYMFONY_PRE_USER_SAVE => array('onPreUserSave', 0)
         );
     }
 
