@@ -10,11 +10,6 @@ use Doctrine\ORM\EntityManager;
  */
 class UserManager
 {
-    /**
-     * em
-     *
-     * @var Doctrine\ORM\EntityManager
-     */
     protected $em;
 
     public function __construct(EntityManager $em)
@@ -26,6 +21,8 @@ class UserManager
     {
         $user = new User();
         $user->setEmail($email);
+
+        /* Queremos lanzar un evento antes de la guardar el usuario en la bbdd */
 
         $this->em->persist($user);
         $this->em->flush();
