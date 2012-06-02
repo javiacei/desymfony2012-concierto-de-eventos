@@ -4,6 +4,7 @@ namespace DeSymfony\UserBundle\Model;
 
 use DeSymfony\UserBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * UserManager Model
@@ -12,9 +13,12 @@ class UserManager
 {
     protected $em;
 
-    public function __construct(EntityManager $em)
+    protected $dispatcher;
+
+    public function __construct(EntityManager $em, EventDispatcherInterface $dispatcher)
     {
         $this->em = $em;
+        $this->dispatcher = $dispatcher;
     }
 
     public function createUser($email)
@@ -22,7 +26,7 @@ class UserManager
         $user = new User();
         $user->setEmail($email);
 
-        /* Queremos lanzar un evento antes de la guardar el usuario en la bbdd */
+
 
         $this->em->persist($user);
         $this->em->flush();
