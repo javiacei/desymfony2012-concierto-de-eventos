@@ -1,6 +1,10 @@
 <h2>Usuarios Registrados</h2>
 <ol class="lista-usuarios">
   {% for user in users %}
-    <li>{{ user.email }}</li>
+    <li>{{ user.email }}
+      <ul>
+        {%for type,data in user.metadata %}<li><label>{{type}}: {{data}}</label></li>{%endfor%}
+      </ul>
+    </li>
   {% endfor %}
 </ol>
