@@ -2,3 +2,7 @@ DeSymfonyUserBundle:
     resource: "@DeSymfonyUserBundle/Controller/"
     type:     annotation
     prefix:   /
+
+main:
+  pattern: /
+  defaults: {_controller: DeSymfonyUserBundle:Registration:index}
