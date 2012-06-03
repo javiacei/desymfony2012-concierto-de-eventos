@@ -21,12 +21,15 @@ class UserListener
         try {
             $response = $request->send();
         } catch (\Exception $e) {
-            // User not found
+            $user->setMetadata(
+                array ( 'github' => 'Sin comprobar')
+            );
             return;
         }
 
-        $user->setMetadata(array(
-            'github' => \json_decode($response->getBody(), true)
-        ));
+        $user->setMetadata(
+            array( 'github' => \json_decode($response->getBody(), true)
+            )
+        );
     }
 }
