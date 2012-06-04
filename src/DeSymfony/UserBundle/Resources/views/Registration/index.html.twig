@@ -3,22 +3,24 @@
 {% block title %}deSymfony 2012 - Registro de usuario{% endblock %}
 
 {% block body %}
-<div class="hero-unit">
-  <h1>Registrate!</h1>
-  <p>Página de prueba para la charla de eventos de deSymfony 2012 </p>
-  <br/>
-  <form method="post" class="well form-inline" action="{{ path('registration_save') }}">
-    <div class="input-prepend">
-      <span class="add-on">@</span><input type="email" size="30" name="email" class="span2">
-    </div>
-    <button type="submit" class="btn btn-large btn-primary ">Registrarme</button>
-</div>
-  </form>
+  <div class="hero-unit">
+    <h1>Registrate!</h1>
+    <p>Página de prueba para la charla de eventos de deSymfony 2012 </p>
+    <br/>
+    <form method="post" class="well form-inline" action="{{ path('registration_save') }}">
+      <div class="input-prepend">
+        <span class="add-on">@</span><input type="email" size="30" name="email" class="span2">
+      </div>
+      <button type="submit" class="btn btn-large btn-primary ">Registrarme</button>
+    </form>
+  </div>
+
   {% if app.session.hasFlash('info') %}
     <div class="alert alert-success">
       <strong>{{ app.session.flash('info') }}</strong>
     </div>
   {% endif %}
+
   <div class="span10">
     {% render 'DeSymfonyUserBundle:Registration:listUsers' %}
   </div>

@@ -15,21 +15,15 @@ class UserManager
 {
     protected $em;
 
-    protected $dispatcher;
-
-    public function __construct(EntityManager $em, EventDispatcherInterface $dispatcher)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->dispatcher = $dispatcher;
     }
 
     public function createUser($email)
     {
         $user = new User();
         $user->setEmail($email);
-
-        $event = new GetUserEvent($user);
-        $this->dispatcher->dispatch(UserEvents::PRE_USER_SAVE, $event);
 
         $this->em->persist($user);
         $this->em->flush();

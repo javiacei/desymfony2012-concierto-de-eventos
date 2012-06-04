@@ -12,7 +12,6 @@
   <services>
     <service id="de_symfony_user.user_manager" class="%de_symfony_user.user_manager.class%">
       <argument type="service" id="doctrine.orm.default_entity_manager" />
-      <argument type="service" id="event_dispatcher" />
     </service>
   </services>
 </container>
