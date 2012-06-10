@@ -1,6 +1,14 @@
 <h2>Usuarios Registrados</h2>
 <ol class="lista-usuarios">
   {% for user in users %}
-    <li>{{ user.email }}</li>
+    <li>
+      {{ user.email }}
+      {% if user.metadata.github is defined %}
+        <a href="http://github.com/{{ user.metadata.github.login }}">
+          <img src="{{ asset('bundles/desymfonyuser/img/github.png') }}" />
+        </a>
+        {{ user.metadata.github.public_repo_count }}
+      {% endif %}
+    </li>
   {% endfor %}
 </ol>
