@@ -8,6 +8,8 @@
           <img src="{{ asset('bundles/desymfonyuser/img/github.png') }}" />
         </a>
         {{ user.metadata.github.public_repo_count }}
+      {% else %}
+        <img src="{{ asset('bundles/desymfonyuser/img/no_github.png') }}" />
       {% endif %}
     </li>
   {% endfor %}
