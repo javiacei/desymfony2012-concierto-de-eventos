@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+      <service id="de_symfony_user.request_listener"
+        class="DeSymfony\UserBundle\EventListener\DeSymfonyRequestListener">
+        <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="4096"/>
+
+        <argument type="service" id="logger" />
+
+      </service>
+
+      <service id="de_symfony_user.event_listener"
+      class="DeSymfony\UserBundle\EventListener\UserListener">
+      <tag name="de_symfony_user.event_listener" event="de_symfony_user.pre_user_save" method="onPreUserSave" />
+      </service>
+    </services>
+
+</container>
